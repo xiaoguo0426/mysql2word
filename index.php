@@ -6,10 +6,10 @@
 $dbserver   = "127.0.0.1";
 $dbusername = "root";
 $dbpassword = "123123";
-$database   = "dreamworld";
+$database   = "test";
 
 //其他配置
-$mysql_conn = @mysql_connect("$dbserver", "$dbusername", "$dbpassword") or die("Mysql connect is error.");
+$mysql_conn = @mysql_connect($dbserver, $dbusername, $dbpassword) or die("Mysql connect is error.");
 mysql_select_db($database, $mysql_conn);
 mysql_query('SET NAMES utf8', $mysql_conn);
 $table_result = mysql_query('show tables', $mysql_conn);
