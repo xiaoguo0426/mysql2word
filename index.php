@@ -2,7 +2,6 @@
 /**
  * 生成mysql数据字典
  */
-header("Content-type: text/html; charset=utf-8");
 //配置数据库
 $dbserver   = "127.0.0.1";
 $dbusername = "root";
@@ -24,20 +23,7 @@ while($row = mysql_fetch_array($table_result)){
 		$tables[]['TABLE_NAME'] = $row[0];
 	}
 }
-//替换所以表的表前缀
-if(isset($_GET['prefix'])){
-	$prefix = 'czzj';
-	foreach($tables as $key => $val){
-		$tableName = $val['TABLE_NAME'];
-		$string = explode('_',$tableName);
-		if($string[0] != $prefix){  
-			$string[0] = $prefix;  
-			$newTableName = implode('_', $string);  
-			mysql_query('rename table '.$tableName.' TO '.$newTableName);  
-		}
-	}
-	echo "替换成功！";exit();
-}
+
 $html = '<html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns:w="urn:schemas-microsoft-com:office:word"
 xmlns="http://www.w3.org/TR/REC-html40">
